@@ -25,6 +25,12 @@
 				},
 				{
 					"name": "window1"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "alterRow1"
 				}
 			],
 			"scriptLines": [
@@ -53,7 +59,14 @@
 				"derivedColumn1 window(over(PrimaryGenre,",
 				"          year),",
 				"     desc({Rotten Tomato}, true),",
-				"     RatingRank = rank()) ~> window1"
+				"     RatingRank = rank()) ~> window1",
+				"window1 aggregate(groupBy(PrimaryGenre,",
+				"          year),",
+				"     AverageRating = avg(toInteger({Rotten Tomato})),",
+				"          HighestRead = first(title),",
+				"          LowestRead = last(title),",
+				"          NumberOfMovies = count()) ~> aggregate1",
+				"aggregate1 alterRow(upsertIf(true())) ~> alterRow1"
 			]
 		}
 	}
