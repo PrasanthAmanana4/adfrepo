@@ -1,0 +1,9 @@
+{
+	"name": "paaaa-data-factory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "4b700350-70b1-4313-96ad-9d52e9289fa3",
+		"tenantId": "267bf8c8-7289-495c-8652-4db3f7f61f33"
+	}
+}
